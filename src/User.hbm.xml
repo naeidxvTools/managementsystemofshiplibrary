@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="net.imwork.zhanlong.msosl.user.model.User" table="t_user">
+        <id name="uid" column="uid" type="string">
+            <generator class="uuid"/>
+        </id>
+
+        <property name="loginname" column="loginname" type="string"/>
+        <property name="loginpass" column="loginpass" type="string"/>
+        <property name="email" column="email" type="string"/>
+        <property name="status" column="status" type="int"/>
+        <property name="activationCode" column="activationCode" type="string"/>
+
+    </class>
+
+
+</hibernate-mapping>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--  1.第一步配置数据源 -->
+    <!-- C3P0数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/goods?serverTimezone=GMT&amp;useSSL=true"/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!--  2.第二步配置SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <list>
+                <value>User.hbm.xml</value>
+                <value>Category.hbm.xml</value>
+                <value>Book.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--  3.第三步配置Dao -->
+    <bean id="userDao" class="net.imwork.zhanlong.msosl.user.dao.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="bookDao" class="net.imwork.zhanlong.msosl.book.dao.impl.BookDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="categoryDao" class="net.imwork.zhanlong.msosl.category.dao.impl.CategoryDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <!--  4.第四步配置service -->
+    <bean id="bookService" class="net.imwork.zhanlong.msosl.book.service.impl.BookServiceImpl">
+        <property name="bookDao" ref="bookDao"/>
+    </bean>
+    <bean id="categoryService" class="net.imwork.zhanlong.msosl.category.service.impl.CategoryServiceImpl">
+        <property name="categoryDao" ref="categoryDao"/>
+    </bean>
+
+    <!--  4.第四步配置service （配置事务的service）-->
+    <bean id="userService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="target">
+            <bean class="net.imwork.zhanlong.msosl.user.service.impl.UserServiceImpl">
+                <property name="userDao" ref="userDao"/>
+            </bean>
+        </property>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!--  5.第五步配置action -->
+    <bean id="userLoginAction" class="net.imwork.zhanlong.msosl.user.action.LoginAction">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <bean id="findByCategoryAction" class="net.imwork.zhanlong.msosl.book.action.FindByCategoryAction">
+        <property name="bookService" ref="bookService"/>
+    </bean>
+    <bean id="findByAuthorAction" class="net.imwork.zhanlong.msosl.book.action.FindByAuthorAction">
+        <property name="bookService" ref="bookService"/>
+    </bean>
+    <bean id="findByPressAction" class="net.imwork.zhanlong.msosl.book.action.FindByPressAction">
+        <property name="bookService" ref="bookService"/>
+    </bean>
+
+    <bean id="categoryAction" class="net.imwork.zhanlong.msosl.category.action.CategoryAction">
+        <property name="categoryService" ref="categoryService"/>
+    </bean>
+    <bean name="loadAction" class="net.imwork.zhanlong.msosl.book.action.LoadAction">
+        <property name="bookService" ref="bookService"/>
+    </bean>
+
+
+
+</beans>

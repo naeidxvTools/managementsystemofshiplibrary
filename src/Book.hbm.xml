@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="net.imwork.zhanlong.msosl.book.model.Book" table="t_book">
+        <id name="bid" column="bid" type="string">
+            <generator class="uuid"/>
+        </id>
+
+        <property name="bname" column="bname" type="string"/>
+        <property name="author" column="author" type="string"/>
+        <property name="press" column="press" type="string"/>
+
+        <property name="publishtime" column="publishtime" type="string"/>
+        <property name="edition" column="edition" type="int"/>
+<!--        <property name="pageNum" column="pageNum" type="int"/>-->
+<!--        <property name="wordNum" column="wordNum" type="int"/>-->
+<!--        <property name="printtime" column="printtime" type="string"/>-->
+<!--        <property name="booksize" column="booksize" type="int"/>-->
+<!--        <property name="registrationNumber" column="registrationNumber" type="string"/>-->
+        <property name="image_w" column="image_w" type="string"/>
+        <property name="image_b" column="image_b" type="string"/>
+
+
+
+    </class>
+
+
+</hibernate-mapping>

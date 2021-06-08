@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="net.imwork.zhanlong.msosl.category.model.Category" table="t_category">
+        <id name="cid" column="cid" type="string">
+            <generator class="uuid"/>
+        </id>
+
+        <property name="cname" column="cname" type="string"/>
+        <property name="desc" column="desc" type="string"/>
+
+        <list name="children" cascade="save-update" inverse="true" lazy="false">
+            <key column="pid"/>
+            <index column="index_"/>
+            <one-to-many class="net.imwork.zhanlong.msosl.category.model.Category"/>
+        </list>
+
+        <many-to-one lazy="false" cascade="save-update" name="parent" column="pid" class="net.imwork.zhanlong.msosl.category.model.Category"/>
+
+    </class>
+
+
+</hibernate-mapping>

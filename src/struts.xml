@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="msosl" extends="struts-default">
+        <action name="login" class="userLoginAction">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="input">/jsps/user/login.jsp</result>
+        </action>
+
+        <action name="findByCategoryAction" class="findByCategoryAction">
+            <result name="success">/jsps/book/list.jsp</result>
+        </action>
+        <action name="findByAuthorAction" class="findByAuthorAction">
+            <result name="success">/jsps/book/list.jsp</result>
+        </action>
+        <action name="findByPressAction" class="findByPressAction">
+            <result name="success">/jsps/book/list.jsp</result>
+        </action>
+
+        <action name="loadAction" class="loadAction">
+            <result name="success">/jsps/book/desc.jsp</result>
+        </action>
+
+        <action name="category" class="categoryAction">
+            <result name="success">/jsps/left.jsp</result>
+        </action>
+    </package>
+
+</struts>
