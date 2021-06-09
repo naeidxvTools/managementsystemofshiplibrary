@@ -96,6 +96,8 @@
     <bean name="loadAction" class="net.imwork.zhanlong.msosl.book.action.LoadAction">
         <property name="bookService" ref="bookService"/>
     </bean>
+    <bean name="quitAction" class="net.imwork.zhanlong.msosl.user.action.QuitAction"/>
+
 
 
 

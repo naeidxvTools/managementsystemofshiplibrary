@@ -12,11 +12,10 @@
         <property name="cname" column="cname" type="string"/>
         <property name="desc" column="desc" type="string"/>
 
-        <list name="children" cascade="save-update" inverse="true" lazy="false">
+        <set name="children" cascade="save-update" inverse="true" lazy="false">
             <key column="pid"/>
-            <index column="index_"/>
             <one-to-many class="net.imwork.zhanlong.msosl.category.model.Category"/>
-        </list>
+        </set>
 
         <many-to-one lazy="false" cascade="save-update" name="parent" column="pid" class="net.imwork.zhanlong.msosl.category.model.Category"/>
 

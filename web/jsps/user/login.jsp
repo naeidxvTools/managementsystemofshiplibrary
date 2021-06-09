@@ -28,6 +28,11 @@
 
             $("#loginname").val(loginname);
         });
+
+        function _change()
+        {
+            $("#imgVerifyCode").attr("src", "/managementSystemOfShipLibrary/verifyCodeAction.action?a=" + new Date().getTime());
+        }
     </script>
 </head>
 <body>
@@ -68,7 +73,7 @@
                         <td>
                             <input class="input yzm" type="text" name="verifyCode" id="verifyCode"
                                    value="${user.verifyCode}"/>
-                            <img id="imgVerifyCode" src="<c:url value='/VerifyCodeServlet'/>"/>
+                            <img id="imgVerifyCode" src="<c:url value='/verifyCodeAction.action'/>"/>
                             <a id="aVerifyCode" href="javascript:_change();">换张图</a>
                         </td>
                     </tr>

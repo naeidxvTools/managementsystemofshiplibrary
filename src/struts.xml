@@ -8,6 +8,9 @@
             <result name="success" type="redirect">/index.jsp</result>
             <result name="input">/jsps/user/login.jsp</result>
         </action>
+        <action name="quitAction" class="quitAction">
+            <result name="success">/jsps/user/login.jsp</result>
+        </action>
 
         <action name="findByCategoryAction" class="findByCategoryAction">
             <result name="success">/jsps/book/list.jsp</result>
@@ -25,6 +28,9 @@
 
         <action name="category" class="categoryAction">
             <result name="success">/jsps/left.jsp</result>
+        </action>
+        
+        <action name="verifyCodeAction" class="net.imwork.zhanlong.msosl.user.action.VerifyCodeAction">
         </action>
     </package>
 

@@ -1,3 +1,4 @@
 function _change() {
-	$("#imgVerifyCode").attr("src", "/managementSystemOfShipLibrary/VerifyCodeServlet?a=" + new Date().getTime());
+	$("#imgVerifyCode").attr("src", "/managementSystemOfShipLibrary/verifyCodeAction.action?a=" + new Date().getTime());
+	alert($("#imgVerifyCode").attr("src"));
 }

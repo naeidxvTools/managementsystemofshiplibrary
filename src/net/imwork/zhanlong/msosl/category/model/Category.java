@@ -1,6 +1,6 @@
 package net.imwork.zhanlong.msosl.category.model;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Administrator
@@ -12,7 +12,7 @@ public class Category
     private String cname;//分类名称
     private Category parent;//父分类
     private String desc;//分类描述
-    private List<Category> children;//子分类
+    private Set<Category> children;//子分类
 
     @Override
     public String toString()
@@ -65,12 +65,12 @@ public class Category
         this.desc = desc;
     }
 
-    public List<Category> getChildren()
+    public Set<Category> getChildren()
     {
         return children;
     }
 
-    public void setChildren(List<Category> children)
+    public void setChildren(Set<Category> children)
     {
         this.children = children;
     }

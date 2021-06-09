@@ -9,10 +9,10 @@ $(function ()
     //2.切换注册按钮的图片
     $("#submitBtn").hover(function ()
     {
-        $(this).attr("src","/BMS/images/regist2.jpg");
+        $(this).attr("src","/managementSystemOfShipLibrary/images/regist2.jpg");
     },function ()
     {
-        $(this).attr("src","/BMS/images/regist1.jpg");
+        $(this).attr("src","/managementSystemOfShipLibrary/images/regist1.jpg");
     });
 
     //3.输入框得到焦点隐藏错误信息

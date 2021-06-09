@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -52,13 +51,9 @@ public class CategoryAction extends ActionSupport implements ServletRequestAware
         //1.通过service得到所有的分类
         //2.保存request中，转发到left.jsp
         List<Category> parents = null;
-        try
-        {
-            parents = categoryService.findAll();
-        } catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-        }
+
+        parents = categoryService.findAll();
+
 
         request.setAttribute("parents", parents);
 

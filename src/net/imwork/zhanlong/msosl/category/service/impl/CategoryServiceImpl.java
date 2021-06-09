@@ -4,7 +4,6 @@ import net.imwork.zhanlong.msosl.category.dao.CategoryDao;
 import net.imwork.zhanlong.msosl.category.model.Category;
 import net.imwork.zhanlong.msosl.category.service.CategoryService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService
@@ -17,7 +16,7 @@ public class CategoryServiceImpl implements CategoryService
     }
 
     @Override
-    public List<Category> findAll() throws SQLException
+    public List<Category> findAll()
     {
         return categoryDao.findAll();
     }
