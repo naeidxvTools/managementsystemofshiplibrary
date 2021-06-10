@@ -6,6 +6,9 @@ import net.imwork.zhanlong.msosl.category.service.CategoryService;
 
 import java.util.List;
 
+/**
+ * @author 展龙
+ */
 public class CategoryServiceImpl implements CategoryService
 {
     private CategoryDao categoryDao;

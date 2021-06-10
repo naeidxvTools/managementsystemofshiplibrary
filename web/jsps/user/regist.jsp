@@ -7,25 +7,6 @@
     <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/jsps/js/user/regist.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/js/common.js'/>"></script>
-    <script type="text/javascript">
-        function _change()
-        {
-            $("#imgVerifyCode").attr("src", "/managementSystemOfShipLibrary/verifyCodeAction.action?a=" + new Date().getTime());
-        }
-
-        //2.切换注册按钮的图片
-        $("#submitBtn").hover(function ()
-        {
-            alert("ok");
-            $(this).attr("src", "/managementSystemOfShipLibrary/images/regist2.jpg");
-
-        }, function ()
-        {
-            alert("no ok;")
-            $(this).attr("src", "/managementSystemOfShipLibrary/images/regist1.jpg");
-        });
-        alert($("#submitBtn"));
-    </script>
 </head>
 <body>
 <div id="divMain">
@@ -35,7 +16,8 @@
     </div>
 
     <div id="divBody">
-        <form action="<c:url value='/UserServlet'/> " method="post" id="formRegist">
+<%--        <form action="<c:url value='/UserServlet'/> " method="post" id="formRegist">--%>
+        <form action="#" method="post" id="formRegist">
             <input type="hidden" name="method" value="regist">
             <table id="tableForm">
                 <tr>
@@ -78,7 +60,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input id="submitBtn" type="image" src="<c:url value='/images/regist1.jpg'/> " ></td>
+                    <td><input id="submitBtn" type="image" src="<c:url value='/images/regist1.jpg'/>"></td>
                     <td><label></label></td>
                 </tr>
             </table>
